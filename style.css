@@ -1,0 +1,334 @@
+/* =============================================
+   DRAMATIC EPILOGUE — GOAT (야고보서 1:12-18)
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: #0a0712; /* Deep background as fallback */
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #1c1926;
+  -webkit-text-size-adjust: 100%;
+  background-color: #f8f7fc; /* Default light background */
+}
+
+/* ---------- Scene System ---------- */
+.scene {
+  position: fixed; inset: 0;
+  display: flex; align-items: stretch; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transform: scale(1.03) translateY(10px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scene.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: scale(1) translateY(0);
+}
+
+.scene-inner {
+  width: 100%; max-width: 480px; height: 100%;
+  display: flex; flex-direction: column; align-items: center;
+  position: relative; overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+  background: #f8f7fc;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Sound Button ---------- */
+#sound-btn {
+  position: fixed; top: 20px; right: 20px; z-index: 9999;
+  background: rgba(255, 255, 255, 0.15); 
+  border: 1px solid rgba(255, 255, 255, 0.25); 
+  border-radius: 50%;
+  width: 46px; height: 46px; font-size: 18px; cursor: pointer;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  color: #fff;
+}
+#sound-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+#sound-btn:active { transform: scale(0.9) translateY(0); }
+
+/* ──────────────────────────────────────────
+   LANDING & COVER (scene-0)
+   ────────────────────────────────────────── */
+.ep-label {
+  font-size: 12px; letter-spacing: 0.25em;
+  color: #e5c158; text-transform: uppercase;
+  margin-bottom: 12px; 
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+.main-title {
+  font-family: 'Gowun Batang', serif;
+  font-size: clamp(34px, 9.5vw, 46px);
+  font-weight: 700; color: #1c1926;
+  line-height: 1.35; margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+}
+.dark-bg .main-title {
+  color: #ffffff;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* ──────────────────────────────────────────
+   IMAGE CARD
+   ────────────────────────────────────────── */
+.img-card {
+  width: 100%; height: 45vh; flex-shrink: 0; background: transparent;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.img-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; width: 100%; height: 25%;
+  background: linear-gradient(to top, var(--fade-color, #f8f7fc), transparent);
+  pointer-events: none;
+}
+.dark-bg .img-card::after {
+  --fade-color: #0a0712;
+}
+.img-card img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scene.active .img-card img {
+  transform: scale(1.05);
+}
+
+/* ──────────────────────────────────────────
+   TEXT BLOCK
+   ────────────────────────────────────────── */
+.text-block {
+  width: 100%; flex: 1; overflow-y: auto; overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 24px 28px 120px; text-align: left;
+  -ms-overflow-style: none; scrollbar-width: none;
+}
+.text-block::-webkit-scrollbar { display: none; }
+
+.tag {
+  display: inline-block; font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em; color: #6b4ba3;
+  background: #f1ecfa; border: 1px solid #dcd1f2;
+  border-radius: 6px; padding: 4px 10px; margin-bottom: 16px;
+  font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+}
+.dark-tag { 
+  color: #e5c158; 
+  background: rgba(229, 193, 88, 0.1); 
+  border-color: rgba(229, 193, 88, 0.25); 
+}
+
+.scene-h {
+  font-family: 'Gowun Batang', serif;
+  font-size: 23px; font-weight: 700;
+  color: #1c1926; line-height: 1.45; margin-bottom: 18px;
+  word-break: keep-all;
+}
+.dark-h { 
+  color: #ffffff; 
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.scene-p {
+  font-size: 15.5px; line-height: 1.85;
+  color: #4c4759; margin-bottom: 16px;
+  word-break: keep-all;
+  font-weight: 400;
+}
+.scene-p strong { 
+  color: #6b4ba3; 
+  font-weight: 700;
+}
+.scene-p.dark-p { color: #cfcad6; }
+.scene-p.dark-p strong { color: #f2ce63; }
+.em-text { font-style: normal; color: #8a7a6a !important; }
+
+/* ──────────────────────────────────────────
+   HIGHLIGHT BOX & Q&A
+   ────────────────────────────────────────── */
+.highlight-box {
+  background: #f2eefc;
+  border-left: 4px solid #6b4ba3;
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 15.5px; line-height: 1.8;
+  color: #40276d; margin: 18px 0;
+  word-break: keep-all;
+}
+.highlight-box strong { color: #6b4ba3; }
+
+.dark-highlight {
+  background: rgba(229, 193, 88, 0.06);
+  border-left-color: #e5c158;
+  color: #e2ddec;
+  border: 1px solid rgba(229, 193, 88, 0.15);
+  border-left: 4px solid #e5c158;
+}
+.dark-highlight strong { color: #ffeb99; }
+
+.qa-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ──────────────────────────────────────────
+   DARK BACKGROUNDS
+   ────────────────────────────────────────── */
+.dark-bg { 
+  background: #0a0712; 
+}
+.dark-bg .scene-inner {
+  background: #0a0712;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+.dark-text { color: #e2ddec; }
+
+/* ──────────────────────────────────────────
+   BOTTOM BAR
+   ────────────────────────────────────────── */
+.bottom-bar {
+  position: absolute; bottom: 0;
+  left: 0; width: 100%;
+  padding: 12px 24px 32px;
+  background: linear-gradient(to top,
+    #f8f7fc 75%, rgba(248, 247, 252, 0));
+  z-index: 100;
+}
+.nav-buttons {
+  display: flex; gap: 10px; width: 100%;
+}
+.dark-bar {
+  background: linear-gradient(to top,
+    #0a0712 75%, transparent) !important;
+}
+
+/* ──────────────────────────────────────────
+   BUTTONS
+   ────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, #e5c158, #c39a3b);
+  color: #0a0712; border: none;
+  border-radius: 50px; padding: 16px 44px;
+  font-size: 17px; font-weight: 700;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer; letter-spacing: 0.03em;
+  box-shadow: 0 6px 20px rgba(229, 193, 88, 0.25);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(229, 193, 88, 0.35);
+}
+.btn-primary:active { transform: translateY(1px) scale(0.98); }
+
+.btn-next {
+  flex: 1; display: block; width: 100%;
+  background: #ffffff; color: #1c1926;
+  border: 1px solid #dcd6e8; border-radius: 50px;
+  padding: 16px; font-size: 16.5px; font-weight: 600;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer; letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.btn-next:hover {
+  background: #fcfbfe;
+  border-color: #beb6cc;
+}
+.btn-next:active { transform: scale(0.98); background: #f5f2fa; }
+
+.btn-prev {
+  flex: 0.8; display: block;
+  background: transparent; color: #6b6675;
+  border: 1px solid #dcd6e8; border-radius: 50px;
+  padding: 16px; font-size: 16px; font-weight: 500;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer; letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+.btn-prev:hover {
+  color: #1c1926;
+  border-color: #beb6cc;
+}
+.btn-prev:active { transform: scale(0.98); background: #f5f2fa; }
+
+.dark-btn {
+  background: linear-gradient(135deg, #e5c158, #c39a3b) !important;
+  color: #0a0712 !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(229, 193, 88, 0.2);
+}
+.dark-btn:hover {
+  box-shadow: 0 6px 20px rgba(229, 193, 88, 0.3) !important;
+}
+.dark-btn-prev {
+  border-color: rgba(255, 255, 255, 0.15) !important; 
+  color: #cfcad6 !important; 
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+.dark-btn-prev:hover {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+}
+
+/* ──────────────────────────────────────────
+   KAKAO BUTTON
+   ────────────────────────────────────────── */
+.btn-kakao {
+  display: flex; align-items: center;
+  justify-content: center; gap: 10px;
+  width: 100%; max-width: 340px; margin: 12px auto;
+  background: #FFE300; color: #3C1E1E; border: none;
+  border-radius: 50px; padding: 16px 24px;
+  font-size: 16px; font-weight: 700;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer; letter-spacing: 0.02em;
+  box-shadow: 0 4px 18px rgba(255,227,0,0.35);
+  transition: all 0.2s ease;
+}
+.btn-kakao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(255,227,0,0.45);
+}
+.btn-kakao:active { transform: translateY(0) scale(0.98); }
+
+/* ─── Extra Helpers ─── */
+.text-center { text-align: center; }
+.w-full { width: 100%; }
+.mt-4 { margin-top: 1rem; }
+.mb-4 { margin-bottom: 1rem; }
+.d-flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
