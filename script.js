@@ -34,12 +34,12 @@ function updateVisitorCount() {
   const countEl = document.getElementById('visit-count');
   if (!countEl) return;
 
-  // CounterAPI를 사용한 유니크 조회수 트래킹 (dramatic-epilogue-goat-2026 네임스페이스 활용)
-  fetch('https://api.counterapi.dev/v1/dramatic-epilogue-goat-2026/visit/increment')
+  // CounterAPI를 사용한 유니크 조회수 트래킹 (dramatic-epilogue-goat 네임스페이스 및 /up 증가 API 활용)
+  fetch('https://api.counterapi.dev/v1/dramatic-epilogue-goat/visit/up')
     .then(res => res.json())
     .then(data => {
-      if (data && typeof data.value !== 'undefined') {
-        countEl.textContent = data.value.toLocaleString();
+      if (data && typeof data.count !== 'undefined') {
+        countEl.textContent = data.count.toLocaleString();
       } else {
         countEl.textContent = '0';
       }
