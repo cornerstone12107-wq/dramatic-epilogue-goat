@@ -22,11 +22,41 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   showScene(0);
+  updateVisitorCount();
 
   // 첫 터치나 클릭 시 BGM 자동 시작 권장 (브라우저 차단 우회)
   document.addEventListener('touchstart', tryAutoPlay, { once: true });
   document.addEventListener('click', tryAutoPlay, { once: true });
 });
+
+// 조회수 가져오기 및 증가
+function updateVisitorCount() {
+  const countEl = document.getElementById('visit-count');
+  if (!countEl) return;
+
+  // CounterAPI를 사용한 유니크 조회수 트래킹 (dramatic-epilogue-goat-2026 네임스페이스 활용)
+  fetch('https://api.counterapi.dev/v1/dramatic-epilogue-goat-2026/visit/increment')
+    .then(res => res.json())
+    .then(data => {
+      if (data && typeof data.value !== 'undefined') {
+        countEl.textContent = data.value.toLocaleString();
+      } else {
+        countEl.textContent = '0';
+      }
+    })
+    .catch(err => {
+      console.warn('조회수 API 오류:', err);
+      // 오프라인 혹은 오류 시 로컬 스토리지 기반 카운터 폴백
+      try {
+        let localCount = localStorage.getItem('local-visit-count') || 0;
+        localCount = parseInt(localCount) + 1;
+        localStorage.setItem('local-visit-count', localCount);
+        countEl.textContent = localCount;
+      } catch (e) {
+        countEl.textContent = '-';
+      }
+    });
+}
 
 let isPlayPending = false;
 

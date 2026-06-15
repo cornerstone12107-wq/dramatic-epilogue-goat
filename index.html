@@ -27,24 +27,28 @@
 
   <!-- SCENE 0 : 표지 (다크 모드) -->
   <section class="scene active" id="scene-0">
-    <div class="scene-inner scroll-scene dark-bg">
-      <div class="img-card">
+    <div class="scene-inner scroll-scene dark-bg" style="overflow: hidden;">
+      <div class="img-card" style="height: 32vh; margin-top: 12px;">
         <!-- [사진 가이드 0] 황금빛 월계관 혹은 찬란한 빛이 쏟아지는 하늘
              - 구도: 중앙 집중형 구도
              - 무드: 신비롭고 웅장함, 다크 퍼플/네이비 배경에 골드 포인트 이미지 추천 -->
         <img src="images/0.jpeg" alt="[추천 사진 0: 황금빛 월계관 또는 은혜로운 광채가 뿜어져 나오는 웅장한 하늘]" onerror="this.src='https://placehold.co/800x800/0a0712/e5c158?text=GOAT+:+God+Over+All+Things'" />
       </div>
-      <div class="text-block dark-text d-flex-center" style="padding-top:1.5rem; text-align:center;">
-        <p class="ep-label">드라마틱 에필로그</p>
-        <h1 class="main-title">GOAT</h1>
-        <p class="scripture" style="color:#b3adb8; margin-bottom:1.5rem; font-size:1.15rem; font-family:'Gowun Batang', serif;">야고보서 1장 12-18절</p>
+      <div class="text-block dark-text d-flex-center" style="padding: 1.5rem 24px 40px; text-align:center; justify-content: center; overflow: hidden;">
+        <p class="ep-label" style="margin-bottom: 6px;">드라마틱 에필로그</p>
+        <h1 class="main-title" style="font-size: clamp(32px, 8vw, 42px); margin-bottom: 8px;">GOAT</h1>
+        <p class="scripture" style="color:#b3adb8; margin-bottom: 1rem; font-size:1.05rem; font-family:'Gowun Batang', serif;">야고보서 1장 12-18절</p>
         
-        <div class="scripture-text" style="color:#d0cbd6; font-size:0.95rem; line-height:1.75; margin-bottom:2rem; word-break:keep-all; padding:0 10px; font-family:'Gowun Batang', serif;">
+        <div class="scripture-text" style="color:#d0cbd6; font-size:0.92rem; line-height:1.65; margin-bottom:1.5rem; word-break:keep-all; padding:0 5px; font-family:'Gowun Batang', serif; max-height: 120px; overflow-y: auto;">
           "온갖 좋은 선물과 온갖 완전한 선물은 위로부터 내려옵니다. 곧 빛들을 지으신 아버지에게서요. 아버지께는 천체들처럼 자리를 바꾸며 운동하는 일도, 또는 천체 운동에 따라 그림자가 생겼다 없어졌다 하는 일도 없습니다." (야고보서 1:17)
         </div>
 
-        <p class="sound-hint" style="color:#e5c158; font-size:0.9rem; margin-bottom:1.2rem; opacity:0.85; font-family:'Outfit', sans-serif;">🎵 사운드를 켜고 감상해주세요</p>
-        <button class="btn-primary" onclick="startApp()">시작하기 →</button>
+        <div class="visitor-counter" style="color: #b3adb8; font-size: 0.85rem; margin-bottom: 1.2rem; font-family: 'Outfit', sans-serif; opacity: 0.85;">
+          ✨ 누적 조회수: <span id="visit-count" style="color: #e5c158; font-weight: 700;">...</span>회
+        </div>
+
+        <p class="sound-hint" style="color:#e5c158; font-size:0.85rem; margin-bottom: 1rem; opacity: 0.8; font-family:'Outfit', sans-serif;">🎵 사운드를 켜고 감상해주세요</p>
+        <button class="btn-primary" onclick="startApp()" style="padding: 14px 40px; font-size: 16px;">시작하기 →</button>
       </div>
     </div>
   </section>
