@@ -1,12 +1,12 @@
 /* =============================================
-   script.js — 드라마틱 에필로그 : GOAT (야고보서 1:12-18)
+   script.js — 드라마틱 에필로그 : 떠나지 않는 아버지 (에스겔 37장)
    ============================================= */
 
 // ─── 카카오 JavaScript 키 (발급받은 키로 교체하여 사용하세요) ───
 const KAKAO_APP_KEY = 'YOUR_KAKAO_JAVASCRIPT_KEY';
 
 // ─── 전체 씬 수 (scene-0 ~ scene-12) ───
-const TOTAL_SCENES = 13;
+const TOTAL_SCENES = 13; // scene-0 ~ scene-12
 
 let currentScene = 0;
 let soundOn = false;
@@ -34,8 +34,8 @@ function updateVisitorCount() {
   const countEl = document.getElementById('visit-count');
   if (!countEl) return;
 
-  // CounterAPI를 사용한 유니크 조회수 트래킹 (dramatic-epilogue-goat 네임스페이스 및 /up 증가 API 활용)
-  fetch('https://api.counterapi.dev/v1/dramatic-epilogue-goat/visit/up')
+  // CounterAPI를 사용한 유니크 조회수 트래킹 (떠나지않는아버지 네임스페이스 및 /up 증가 API 활용)
+  fetch('https://api.counterapi.dev/v1/dramatic-epilogue-father/visit/up')
     .then(res => res.json())
     .then(data => {
       if (data && typeof data.count !== 'undefined') {
@@ -143,8 +143,8 @@ function shareKakao() {
     Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
-        title: '드라마틱 에필로그 — GOAT',
-        description: '내가 내 삶을 이 악물고 완벽히 통제하지 않아도 괜찮습니다. 우리는 이미 존재 자체로 하나님의 실패하지 않는 첫사랑입니다.',
+        title: '드라마틱 에필로그 — 떠나지 않는 아버지',
+        description: '도망친 그 자리에도, 하나님은 먼저 와 계셨습니다. 너는 내 아들이다. 너는 내 딸이다. Remember who you are.',
         imageUrl: pageUrl + 'images/0.jpeg',
         link: { mobileWebUrl: pageUrl, webUrl: pageUrl },
       },
